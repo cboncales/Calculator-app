@@ -20,13 +20,13 @@ function App() {
       <div className="calculator p-5 rounded-[10px] bg-white">
         <div className="display-inpt flex justify-end items-center mt-[5px] mb-[15px]">
           <input
-            className="border-none outline-0 w-full h-[60px] text-[40px] bg-gray-900 m-[2px] rounded-[10px] font-extrabold text-white text-right py-[5px] px-[10px]"
+            className="border-none outline-0 w-[60px] flex-1 h-[60px] text-[40px] bg-gray-900 m-[2px] rounded-[10px] font-extrabold text-white text-right py-[5px] px-[10px]"
             type="text"
             value={value}
             readOnly
           />
         </div>
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-4 gap-1">
           {/* Buttons */}
           {["AC", "DE", ".", "/"].map((item) => (
             <button
@@ -47,7 +47,7 @@ function App() {
           {["7", "8", "9", "*"].map((item) => (
             <button
               key={item}
-              className="btn"
+              className="btn border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
               onClick={handleClick}
               value={item}
             >
@@ -58,7 +58,7 @@ function App() {
           {["4", "5", "6", "+"].map((item) => (
             <button
               key={item}
-              className="btn"
+              className="btn border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
               onClick={handleClick}
               value={item}
             >
@@ -69,7 +69,7 @@ function App() {
           {["1", "2", "3", "-"].map((item) => (
             <button
               key={item}
-              className="btn"
+              className="btn border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
               onClick={handleClick}
               value={item}
             >
@@ -77,11 +77,11 @@ function App() {
             </button>
           ))}
 
-          {["00", "0", "=", ""].map((item) =>
+          {["00", "0", "="].map((item) =>
             item === "=" ? (
               <button
                 key={item}
-                className="btn col-span-2"
+                className="btn border-none outline-0 h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900 col-span-2"
                 onClick={handleCalculate}
               >
                 {item}
@@ -89,7 +89,7 @@ function App() {
             ) : (
               <button
                 key={item}
-                className="btn"
+                className="btn border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
                 onClick={handleClick}
                 value={item}
               >
