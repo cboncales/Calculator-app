@@ -2,116 +2,102 @@ import React, { useState } from "react";
 
 function App() {
   const [value, setValue] = useState("");
+
+  const handleClick = (e) => {
+    setValue(value + e.target.value);
+  };
+
+  const handleCalculate = () => {
+    try {
+      setValue(eval(value).toString()); // Note: `eval` is still risky, consider a safer alternative like `mathjs`
+    } catch {
+      setValue("Error");
+    }
+  };
+
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gray-500">
       <div className="calculator p-5 rounded-[10px] bg-white">
-        <form action="">
-          <div className="display-inpt flex justify-end items-center mt-[5px] mb-[15px]">
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[40px] bg-gray-900 m-[2px] rounded-[10px] font-extrabold text-white text-right flex-1 py-[5px] px-[10px]"
-              type="text"
-              value={value}
-            />
-          </div>
-          <div className="">
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="AC"
-              onClick={(e) => setValue("")}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="DE"
-              onClick={(e) => setValue(value.slice(0, -1))}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="."
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="/"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-          </div>
-          <div className="">
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="7"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="8"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="9"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="*"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-          </div>
-          <div className="">
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="4"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="5"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="6"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="+"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-          </div>
-          <div className="">
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="00"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-            <input
-              className="border-none outline-0 w-[60px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="0"
-              onClick={(e) => setValue(value + e.target.value)}
-            />
-            <input
-              className="border-none outline-0 w-[123px] h-[60px] text-[16px] bg-gray-700 m-[2px] rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
-              type="button"
-              value="="
-              onClick={(e) => setValue(eval(value))}
-            />
-          </div>
-        </form>
+        <div className="display-inpt flex justify-end items-center mt-[5px] mb-[15px]">
+          <input
+            className="border-none outline-0 w-full h-[60px] text-[40px] bg-gray-900 m-[2px] rounded-[10px] font-extrabold text-white text-right py-[5px] px-[10px]"
+            type="text"
+            value={value}
+            readOnly
+          />
+        </div>
+        <div className="grid grid-cols-4 gap-2">
+          {/* Buttons */}
+          {["AC", "DE", ".", "/"].map((item) => (
+            <button
+              key={item}
+              className="w-[60px] h-[60px] text-[16px] bg-gray-700 rounded-[10px] font-extrabold text-white cursor-pointer hover:bg-gray-900"
+              onClick={() =>
+                item === "AC"
+                  ? setValue("")
+                  : item === "DE"
+                    ? setValue(value.slice(0, -1))
+                    : setValue(value + item)
+              }
+            >
+              {item}
+            </button>
+          ))}
+
+          {["7", "8", "9", "*"].map((item) => (
+            <button
+              key={item}
+              className="btn"
+              onClick={handleClick}
+              value={item}
+            >
+              {item}
+            </button>
+          ))}
+
+          {["4", "5", "6", "+"].map((item) => (
+            <button
+              key={item}
+              className="btn"
+              onClick={handleClick}
+              value={item}
+            >
+              {item}
+            </button>
+          ))}
+
+          {["1", "2", "3", "-"].map((item) => (
+            <button
+              key={item}
+              className="btn"
+              onClick={handleClick}
+              value={item}
+            >
+              {item}
+            </button>
+          ))}
+
+          {["00", "0", "=", ""].map((item) =>
+            item === "=" ? (
+              <button
+                key={item}
+                className="btn col-span-2"
+                onClick={handleCalculate}
+              >
+                {item}
+              </button>
+            ) : (
+              <button
+                key={item}
+                className="btn"
+                onClick={handleClick}
+                value={item}
+              >
+                {item}
+              </button>
+            )
+          )}
+        </div>
       </div>
     </div>
   );
